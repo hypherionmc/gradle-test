@@ -24,7 +24,6 @@ pipeline {
     post {
         always {
             sh "./gradlew --stop"
-            deleteDir()
 
             fddsnapshotter apiKey: env.PLATFORM_KEY,
                 projectSlug: "craterlibtest",
@@ -36,6 +35,8 @@ pipeline {
                 minecraftVersions: "1.20.2",
                 failWebhook: env.SSS_WEBHOOK,
                 publishWebhooks: env.SSS_WEBHOOK
+
+            deleteDir()
         }
     }
 }
